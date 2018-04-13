@@ -38,7 +38,7 @@ deleteHouse: (req, res) => {
     dbInstance.DELETE_HOUSE([id]).then((result) => {
         res.status(200).send(result);
     }).catch((e) => {
-        console.log(e);
+        console.log(`Houston we have a problem : ${e}`);
         res.sendStatus(500);
     })
 }

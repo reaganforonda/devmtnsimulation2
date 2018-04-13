@@ -8,7 +8,7 @@ export default function House(props) {
       <p>City: {props.house.city}</p>
       <p>State: {props.house.state}</p>
       <p>Zipcode : {props.house.zipcode}</p>
-      <button>Delete</button>
+      <button onClick={()=>props.delete(props.house.id)}>Delete</button>
     </div>
   );
 }
