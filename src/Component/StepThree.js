@@ -3,7 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
 
-import { updateMortgage, updateRent } from "../ducks/reducer";
+import { updateMortgage, cancel, updateRent } from "../ducks/reducer";
 
 export class StepThree extends Component {
   constructor(props) {
@@ -32,11 +32,13 @@ export class StepThree extends Component {
 
   addNewHouse() {
     let house = {
-      name: this.state.name,
-      address: this.state.address,
-      city: this.state.city,
-      state: this.state.state,
-      zipcode: this.state.zipcode
+      name: this.props.name,
+      address: this.props.address,
+      city: this.props.city,
+      state: this.props.state,
+      zipcode: this.props.zipcode,
+      mortgage : this.state.mortgage,
+      rent : this.state.rent
     };
 
     axios
@@ -46,10 +48,7 @@ export class StepThree extends Component {
       })
       .catch(e => console.log(e));
 
-    this.setState({
-      mortgage: 0,
-      rent: 0
-    });
+      this.props.cancel();
   }
 
   // Update State when Component Loads
