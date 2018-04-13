@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
-import "./reset.css";
 import "./stepone.css";
 
 import {

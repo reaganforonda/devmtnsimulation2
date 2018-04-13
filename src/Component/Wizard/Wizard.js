@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
 import axios from "axios";
-import "./reset.css";
 import "./wizard.css";
 
 import StepOne from "../StepOne";

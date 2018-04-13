@@ -1,13 +1,17 @@
-.App {
-  text-align: center;
+.routes {
+    width : 70vw;
+    margin-left: auto;
+    margin-right: auto;
+    background: #E5F4EC;
+    height: 100%;
 }
 
-.App-title {
-  font-size: 1.5em;
+.header {
+    width: 100%;
+    background-color: #519872;
+    height: 70px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-.App-intro {
-  font-size: large;
-}
-
-

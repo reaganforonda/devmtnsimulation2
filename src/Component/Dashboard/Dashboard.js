@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import House from "../House/House";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "./reset.css";
 import "./dashboard.css";
 
 export default class Dashboard extends Component {
