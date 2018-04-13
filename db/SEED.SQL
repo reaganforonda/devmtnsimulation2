@@ -30,7 +30,7 @@ INSERT INTO houses
 VALUES ('Name 5', 'Address 5', 'City 5', 'CA', 93536);
 
 ALTER TABLE houses
-ADD COLUMN img text;
+ADD COLUMN img TEXT;
 
 ALTER TABLE houses
 ADD COLUMN mortgage DECIMAL;

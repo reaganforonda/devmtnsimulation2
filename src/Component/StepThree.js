@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 
-import {updateMortgage, updateRent} from '../ducks/reducer';
+import { updateMortgage, updateRent } from "../ducks/reducer";
 
 export class StepThree extends Component {
   constructor(props) {
@@ -52,16 +52,16 @@ export class StepThree extends Component {
     });
   }
 
-      // Update State when Component Loads
+  // Update State when Component Loads
   // Using values stored in Redux - set them to state
   componentDidMount() {
     this.setState({
       mortgage: this.props.mortgage,
-      rent : this.props.rent
+      rent: this.props.rent
     });
   }
 
-  updateReduxState(){
+  updateReduxState() {
     this.props.updateMortgage(this.state.mortgage);
     this.props.updateRent(this.state.rent);
   }
@@ -89,9 +89,9 @@ export class StepThree extends Component {
           />
         </div>
         <div>
-            <Link onClick={()=>this.updateReduxState()} to='/wizard/step2'>
+          <Link onClick={() => this.updateReduxState()} to="/wizard/step2">
             <button>Previous Step</button>
-            </Link>
+          </Link>
           <Link to="/">
             <button onClick={() => this.addNewHouse()}> Complete</button>
           </Link>
@@ -101,11 +101,13 @@ export class StepThree extends Component {
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
-    mortgage : state.mortgage,
-    rent : state.rent
+    mortgage: state.mortgage,
+    rent: state.rent
   };
-};
+}
 
-export default connect(mapStateToProps, {updateMortgage, updateRent})(StepThree);
+export default connect(mapStateToProps, { updateMortgage, updateRent })(
+  StepThree
+);
