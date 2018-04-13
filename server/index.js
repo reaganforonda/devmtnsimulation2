@@ -18,6 +18,7 @@ massive(process.env.CONNECTION_STRING).then((dbInstance) => {
 
 // ##### ENDPOINTS ######
 app.get('/api/houses', controller.getHouses);
+app.post('/api/houses', controller.addHouse);
 
 app.listen(port, ()=> {
     console.log(`Creeping on Port: ${port}`);
