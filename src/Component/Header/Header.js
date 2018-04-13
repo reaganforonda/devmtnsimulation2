@@ -5,7 +5,7 @@ import './header.css';
 export default function Header(props){
     return (
         <div className='header-container'>
-        <i class="fas fa-home"></i>
+            <i className='house-icon' class="fas fa-home fa-2x" ></i>
             <h1>Houser</h1>
         </div>
     )

@@ -7,8 +7,17 @@
     height: 100px;
     font-family: 'Open Sans', sans-serif;
     color: white;
+    display: flex;
+    position: relative;
+    align-items: center;
 }
 
 h1 {
     font-size: 40px;
+}
+
+.house-icon{
+    position: absolute;
+    
+
 }

@@ -9,7 +9,6 @@ const initialState = {
     rent : 0
 };
 
-
 // ####################
 // ### Action Types ###
 // ####################
@@ -31,8 +30,7 @@ export function cancel(){
         type : DONT_YOU_FOREGT_ABOUT_ME,
         payload : initialState
     }
-}
-
+};
 
 export function updateName(name){
     return {
