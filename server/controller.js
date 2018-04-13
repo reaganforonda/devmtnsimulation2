@@ -19,9 +19,10 @@ module.exports = {
   //   Add House
   addHouse : (req, res) => {
       const dbInstance = req.app.get('db');
-      const {name, address, city, state, zip, img, mortgage, rent} = req.body;
+      const {name, address, city, state, zip} = req.body;
+      
 
-      dbInstance.ADD_HOUSE([name, address, city, state, zip, img, mortgage, rent]).then((result) => {
+      dbInstance.ADD_HOUSE([name, address, city, state, zip]).then((result) => {
           res.status(200).send(result);
       }).catch((e) => {
           console.log(e);
