@@ -107,6 +107,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { updateMortgage, updateRent })(
+export default connect(mapStateToProps, { updateMortgage, updateRent, cancel })(
   StepThree
 );
