@@ -34,6 +34,7 @@ export class StepTwo extends Component {
   }
 
   render() {
+    console.log(this.props.name);
     return (
       <div>
         <div>

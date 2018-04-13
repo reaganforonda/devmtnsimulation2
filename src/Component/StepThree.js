@@ -10,12 +10,7 @@ export class StepThree extends Component {
     super(props);
 
     this.state = {
-      name: "",
-      address: "",
-      city: "",
-      state: "",
-      zipcode: 0,
-      img: "",
+
       mortgage: 0,
       rent: 0
     };
@@ -42,14 +37,13 @@ export class StepThree extends Component {
     };
 
     axios
-      .post(`http://localhost:4000/api/houses`, house)
+      .post(`http://localhost:4000/api/houses`, (house))
       .then(result => {
         console.log(result.data);
+        this.props.cancel();
       })
       .catch(e => console.log(e));
-
-    this.props.cancel();
-  }
+  };
 
   // Update State when Component Loads
   // Using values stored in Redux - set them to state
@@ -66,6 +60,7 @@ export class StepThree extends Component {
   }
 
   render() {
+    console.log(this.props.name);
     return (
       <div>
         <div>
