@@ -2,22 +2,26 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import {connect} from 'react-redux';
+import {updateIMG} from '../ducks/reducer';
 
 export class StepTwo extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      name: "",
-      address: "",
-      city: "",
-      state: "",
-      zipcode: 0,
       img : ''
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    // this.addNewHouse = this.addNewHouse.bind(this);
+    this.updateReduxState = this.updateReduxState.bind(this);
+  }
+
+    // Update State when Component Loads
+  // Using values stored in Redux - set them to state
+  componentDidMount() {
+    this.setState({
+      img: this.props.img
+    });
   }
 
   // Update State based on input fields
@@ -25,24 +29,9 @@ export class StepTwo extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-//   addNewHouse() {
-//     let house = {
-//       name: this.state.name,
-//       address: this.state.address,
-//       city: this.state.city,
-//       state: this.state.state,
-//       zipcode: this.state.zipcode
-//     };
-
-//     axios
-//       .post(`http://localhost:4000/api/houses`, house)
-//       .then(result => {
-//         console.log(result.data);
-//       })
-//       .catch(e => console.log(e));
-
-//     this.setState({ name: "", address: "", city: "", state: "", zipcode: 0, img:'' });
-//   }
+  updateReduxState(){
+    this.props.updateIMG(this.state.img);
+  }
 
   render() {
     return (
@@ -58,10 +47,10 @@ export class StepTwo extends Component {
         </div>
 
         <div>
-            <Link to='/wizard/step1'>
+            <Link onClick={()=>this.updateReduxState()} to='/wizard/step1'>
             <button>Previous Step</button>
             </Link>
-            <Link to ='/wizard/step3'>
+            <Link onClick={()=>this.updateReduxState()} to ='/wizard/step3'>
                 <button>Next Step</button>
             </Link>
         </div>
@@ -76,4 +65,4 @@ function mapStateToProps(state){
   };
 };
 
-export default connect(mapStateToProps)(StepTwo);
+export default connect(mapStateToProps, {updateIMG})(StepTwo);

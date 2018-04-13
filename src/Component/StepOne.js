@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
+
+import {
+  updateName,
+  updateAddress,
+  updateCity,
+  updateState,
+  updateZipcode
+} from "../ducks/reducer";
 
 export class StepOne extends Component {
   constructor(props) {
@@ -16,7 +24,19 @@ export class StepOne extends Component {
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    // this.addNewHouse = this.addNewHouse.bind(this);
+    this.updateReduxState = this.updateReduxState.bind(this);
+  }
+
+  // Update State when Component Loads
+  // Using values stored in Redux - set them to state
+  componentDidMount() {
+    this.setState({
+      name: this.props.name,
+      address: this.props.address,
+      city: this.props.city,
+      state: this.props.state,
+      zipcode: this.props.zipcode
+    });
   }
 
   // Update State based on input fields
@@ -24,27 +44,16 @@ export class StepOne extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  //   addNewHouse() {
-  //     let house = {
-  //       name: this.state.name,
-  //       address: this.state.address,
-  //       city: this.state.city,
-  //       state: this.state.state,
-  //       zipcode: this.state.zipcode
-  //     };
-
-  //     axios
-  //       .post(`http://localhost:4000/api/houses`, house)
-  //       .then(result => {
-  //         console.log(result.data);
-  //       })
-  //       .catch(e => console.log(e));
-
-  //     this.setState({ name: "", address: "", city: "", state: "", zipcode: 0 });
-  //   }
+  // Update State on Redux Store
+  updateReduxState() {
+    this.props.updateName(this.state.name);
+    this.props.updateCity(this.state.city);
+    this.props.updateAddress(this.state.address);
+    this.props.updateState(this.state.state);
+    this.props.updateZipcode(this.state.zipcode);
+  }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <div>
@@ -80,7 +89,7 @@ export class StepOne extends Component {
           />
         </div>
         <div>
-          <Link to="/wizard/step2">
+          <Link onClick={() => this.updateReduxState()} to="/wizard/step2">
             <button>Next Step</button>
           </Link>
         </div>
@@ -89,14 +98,20 @@ export class StepOne extends Component {
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
-    name : state.name,
-    address : state.address,
-    city : state.city,
-    state : state.state,
-    zipcode : state.zipcode
+    name: state.name,
+    address: state.address,
+    city: state.city,
+    state: state.state,
+    zipcode: state.zipcode
   };
-};
+}
 
-export default connect(mapStateToProps)(StepOne);
+export default connect(mapStateToProps, {
+  updateName,
+  updateAddress,
+  updateCity,
+  updateState,
+  updateZipcode
+})(StepOne);
