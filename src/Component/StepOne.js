@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
+import {connect} from 'react-redux';
 
-export default class StepOne extends Component {
+export class StepOne extends Component {
   constructor(props) {
     super(props);
 
@@ -43,6 +44,7 @@ export default class StepOne extends Component {
   //   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <div>
@@ -86,3 +88,15 @@ export default class StepOne extends Component {
     );
   }
 }
+
+function mapStateToProps(state){
+  return {
+    name : state.name,
+    address : state.address,
+    city : state.city,
+    state : state.state,
+    zipcode : state.zipcode
+  };
+};
+
+export default connect(mapStateToProps)(StepOne);
