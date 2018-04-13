@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import House from "../House/House";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -9,17 +10,25 @@ export default class Dashboard extends Component {
     this.state = {
         houses : []
     };
+
+    this.getAllHouses = this.getAllHouses.bind(this);
+  }
+
+  componentDidMount(){
+      this.getAllHouses()
+  }
+
+  getAllHouses(){
+      axios.get('http://localhost:4000/api/houses').then((result) => {
+          this.setState({houses : result.data});
+      })
   }
 
   render() {
       let arrHouses = this.state.houses.map((house) => {
           return (
               <div key={house.id}>
-                <p>Property Name: {house.name}</p>
-                <p>Address: {house.address}</p>
-                <p>City: {house.city}</p>
-                <p>State: {house.state}</p>
-                <p>Zipcode : {house.zipcode}</p>
+<House house={house}/>
               </div>
           )
       })
@@ -29,7 +38,7 @@ export default class Dashboard extends Component {
         <Link to={`/wizard`}>
           <button>Add New Property</button>
         </Link>
-        <House />
+        {arrHouses}
       </div>
     );
   }
