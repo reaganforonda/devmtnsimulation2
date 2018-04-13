@@ -29,5 +29,17 @@ module.exports = {
           res.sendStatus(500);
       })
 
-  }
+  },
+//   Delete House
+deleteHouse: (req, res) => {
+    const dbInstance = req.app.get('db');
+    const {id} = req.params;
+
+    dbInstance.DELETE_HOUSE([id]).then((result) => {
+        res.status(200).send(result);
+    }).catch((e) => {
+        console.log(e);
+        res.sendStatus(500);
+    })
+}
 };
