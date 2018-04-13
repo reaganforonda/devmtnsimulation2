@@ -6,14 +6,14 @@ import Dashboard from "./Component/Dashboard/Dashboard";
 import Wizard from "./Component/Wizard/Wizard";
 import Header from "./Component/Header/Header";
 import House from "./Component/House/House";
+import Routes from "./route";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Dashboard />
-        <Wizard />
         <Header />
+        <Routes />
       </div>
     );
   }
