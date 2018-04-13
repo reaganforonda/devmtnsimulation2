@@ -53,6 +53,7 @@ export default class Dashboard extends Component {
     });
     return (
       <div className="dashboard-container">
+      
         <div className="h1-button">
           <h1 className="comp-h1">Dashboard</h1>
           <Link to={`/wizard/step1`}>
@@ -62,7 +63,7 @@ export default class Dashboard extends Component {
 
         <hr />
         <h2>Home Listings</h2>
-        <div>{arrHouses}</div>
+        <div className='housing-list'>{arrHouses}</div>
       </div>
     );
   }

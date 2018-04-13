@@ -1,0 +1,19 @@
+.add-prop-button{
+    font-size : 20px;
+    background: #8AEA92;
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+}
+
+.comp-h1 {
+    font-size : 45px;
+    color: #3B5249
+}
+
+.h1-button {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
