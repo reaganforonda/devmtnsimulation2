@@ -37,8 +37,8 @@ export class StepThree extends Component {
       city: this.props.city,
       state: this.props.state,
       zipcode: this.props.zipcode,
-      mortgage : this.state.mortgage,
-      rent : this.state.rent
+      mortgage: this.state.mortgage,
+      rent: this.state.rent
     };
 
     axios
@@ -48,7 +48,7 @@ export class StepThree extends Component {
       })
       .catch(e => console.log(e));
 
-      this.props.cancel();
+    this.props.cancel();
   }
 
   // Update State when Component Loads

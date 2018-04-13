@@ -58,48 +58,53 @@ export class StepOne extends Component {
   render() {
     return (
       <div className="add-listing-container">
-        <div className='top'>
+        <div className="top">
           <h1>ADD LISTING</h1>
         </div>
-        <div className='inputs'>
+        <div className="inputs">
           <h3>Property Name</h3>
           <input
             onChange={e => this.handleInputChange(e)}
             name="name"
             value={this.state.name}
             placeholder="Name"
-          /><br/>
+          />
+          <br />
           <h3>Address</h3>
           <input
             onChange={e => this.handleInputChange(e)}
             name="address"
             value={this.state.address}
             placeholder="Address"
-          /><br/>
+          />
+          <br />
           <h3>City</h3>
           <input
             onChange={e => this.handleInputChange(e)}
             name="city"
             value={this.state.city}
             placeholder="City"
-          /><br/>
+          />
+          <br />
           <h3>State</h3>
           <input
             onChange={e => this.handleInputChange(e)}
             name="state"
             value={this.state.state}
             placeholder="State"
-          /><br/>
+          />
+          <br />
           <h3>Zip</h3>
           <input
             onChange={e => this.handleInputChange(e)}
             name="zipcode"
             value={this.state.zipcode}
             placeholder="Zipcode"
-          /><br/>
+          />
+          <br />
         </div>
         <div>
-        <Link onClick={() => this.updateReduxState()} to="/wizard/step2">
+          <Link onClick={() => this.updateReduxState()} to="/wizard/step2">
             <button>Next Step</button>
           </Link>
         </div>

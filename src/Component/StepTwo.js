@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
-import {connect} from 'react-redux';
-import {updateIMG} from '../ducks/reducer';
+import { connect } from "react-redux";
+import { updateIMG } from "../ducks/reducer";
 
 export class StepTwo extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      img : ''
+      img: ""
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.updateReduxState = this.updateReduxState.bind(this);
   }
 
-    // Update State when Component Loads
+  // Update State when Component Loads
   // Using values stored in Redux - set them to state
   componentDidMount() {
     this.setState({
@@ -29,40 +29,40 @@ export class StepTwo extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  updateReduxState(){
+  updateReduxState() {
     this.props.updateIMG(this.state.img);
   }
 
   render() {
     return (
       <div>
-          <div>
+        <div>
           Image URL
-        <input
-          onChange={e => this.handleInputChange(e)}
-          name="img"
-          value={this.state.img}
-          placeholder=""
-        />
+          <input
+            onChange={e => this.handleInputChange(e)}
+            name="img"
+            value={this.state.img}
+            placeholder=""
+          />
         </div>
 
         <div>
-            <Link onClick={()=>this.updateReduxState()} to='/wizard/step1'>
+          <Link onClick={() => this.updateReduxState()} to="/wizard/step1">
             <button>Previous Step</button>
-            </Link>
-            <Link onClick={()=>this.updateReduxState()} to ='/wizard/step3'>
-                <button>Next Step</button>
-            </Link>
+          </Link>
+          <Link onClick={() => this.updateReduxState()} to="/wizard/step3">
+            <button>Next Step</button>
+          </Link>
         </div>
       </div>
     );
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
-    img : state.img
+    img: state.img
   };
-};
+}
 
-export default connect(mapStateToProps, {updateIMG})(StepTwo);
+export default connect(mapStateToProps, { updateIMG })(StepTwo);

@@ -8,10 +8,10 @@ export default function House(props) {
       <p>City: {props.house.city}</p>
       <p>State: {props.house.state}</p>
       <p>Zipcode : {props.house.zip}</p>
-      <img src={props.house.img} alt='pic-of-house'/>
+      <img src={props.house.img} alt="pic-of-house" />
       <p>Morgage : ${props.house.mortgage}</p>
       <p>Rent : ${props.house.rent}</p>
-      <button onClick={()=>props.delete(props.house.id)}>Delete</button>
+      <button onClick={() => props.delete(props.house.id)}>Delete</button>
     </div>
   );
 }
