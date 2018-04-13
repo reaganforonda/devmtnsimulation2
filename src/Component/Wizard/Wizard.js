@@ -5,8 +5,10 @@ import axios from 'axios';
 import StepOne from '../StepOne';
 import StepTwo from '../StepTwo';
 import StepThree from '../StepThree';
+import { connect } from "react-redux";
+import {cancel} from '../../ducks/reducer';
 
-export default class Wizard extends Component{
+export class Wizard extends Component{
     constructor(props){
         super(props);
 
@@ -48,23 +50,15 @@ export default class Wizard extends Component{
         return (
             <div>
                 Wizard Component
-                <Link to='/'>
+                <Link onClick={()=>this.props.cancel}to='/'>
                     <button>Cancel</button>
                 </Link>
                 <Route path='/wizard/step1' component={StepOne}/>
                 <Route path='/wizard/step2' component={StepTwo}/>
                 <Route path='/wizard/step3' component={StepThree}/>
-                    {/* <div>
-                    <input onChange={(e)=>this.handleInputChange(e)} name='name' value={this.state.name} placeholder='Name'/>
-                    <input onChange={(e)=>this.handleInputChange(e)} name='address' value={this.state.address} placeholder='Address'/>
-                    <input onChange={(e)=>this.handleInputChange(e)} name='city' value={this.state.city} placeholder='City'/>
-                    <input onChange={(e)=>this.handleInputChange(e)} name='state' value={this.state.state} placeholder='State'/>
-                    <input onChange={(e)=>this.handleInputChange(e)} name='zipcode' value={this.state.zipcode} placeholder='Zipcode'/>
-                    </div> */}
-                    {/* <div>
-                        <Link to='/'><button onClick={() => this.addNewHouse()}> Complete</button></Link>
-                    </div> */}
             </div>
         )
     }
 }
+
+export default connect(null, {cancel})(Wizard);

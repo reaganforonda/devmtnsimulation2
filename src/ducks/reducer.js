@@ -21,10 +21,19 @@ const UPDATE_ZIPCODE = "UDPATE_ZIPCODE";
 const UPDATE_IMG = "UPDATE_IMG";
 const UPDATE_MORTGAGE = "UDPATE_MORTGAGE";
 const UPDATE_RENT = "UPDATE_RENT";
+const DONT_YOU_FOREGT_ABOUT_ME = "DONT_YOU_FORGET_ABOUT_ME";
 
 // #######################
 // ### ACTION CREATORS ###
 // #######################
+export function cancel(){
+    return {
+        type : DONT_YOU_FOREGT_ABOUT_ME,
+        payload : initialState
+    }
+}
+
+
 export function updateName(name){
     return {
         type : UPDATE_NAME,
@@ -100,6 +109,8 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {mortgage : action.payload});
       case UPDATE_RENT:
       return Object.assign({}, state, {rent : action.payload});
+      case DONT_YOU_FOREGT_ABOUT_ME:
+      return Object.assign({}, action.payload);
     default:
       return state;
   }
