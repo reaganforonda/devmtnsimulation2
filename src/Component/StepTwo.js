@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
+import {connect} from 'react-redux';
 
-export default class StepTwo extends Component {
+export class StepTwo extends Component {
   constructor(props) {
     super(props);
 
@@ -68,3 +69,11 @@ export default class StepTwo extends Component {
     );
   }
 }
+
+function mapStateToProps(state){
+  return {
+    img : state.img
+  };
+};
+
+export default connect(mapStateToProps)(StepTwo);

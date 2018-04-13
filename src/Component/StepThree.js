@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
+import {connect} from 'react-redux';
 
-export default class StepThree extends Component {
+export class StepThree extends Component {
   constructor(props) {
     super(props);
 
@@ -88,3 +89,12 @@ export default class StepThree extends Component {
     );
   }
 }
+
+function mapStateToProps(state){
+  return {
+    mortgage : state.mortgage,
+    rent : state.rent
+  };
+};
+
+export default connect(mapStateToProps)(StepThree);

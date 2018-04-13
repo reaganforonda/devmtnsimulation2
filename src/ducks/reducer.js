@@ -3,7 +3,10 @@ const initialState = {
     address : '',
     city : '',
     state : '',
-    zipcode : 0
+    zipcode : 0,
+    img : '',
+    mortgage : 0,
+    rent : 0
 };
 
 export default function reducer(state = initialState, action) {
